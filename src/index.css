@@ -8,5 +8,5 @@
   --color-light-grayish-violet: hsl(270, 3%, 87%);
   --color-dark-grayish-violet: hsl(279, 6%, 55%);
   --color-very-dark-violet: hsl(278, 68%, 11%);
-
+  --color-input: bg-gradient-to-br from-[hsl(249, 99%, 64%)] to-[hsl(278, 94%, 30%)];
 }
