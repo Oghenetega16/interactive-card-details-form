@@ -94,47 +94,51 @@ export default function Home() {
     return (
         <main className="min-h-screen md:flex md:items-center md:justify-center">
             <div className="relative px-4 pt-8 pb-16 flex flex-col-reverse bg-[url('./assets/images/bg-main-mobile.png')] bg-no-repeat bg-cover md:bg-[url('./assets/images/bg-main-desktop.png')] md:w-2/5 md:min-h-screen">
-                <div className="absolute top-29.5 z-50 text-white md:absolute md:-right-15 lg:top-25 lg:-right-30">
-                    <img src="./assets/images/bg-card-front.png" alt="" className="w-70 xl:w-auto"/>
-                    <img src="./assets/images/card-logo.svg" alt="" className="absolute top-0 p-5 w-25 lg:w-auto"/>
-                    <div className="flex flex-col gap-2 absolute top-20 px-5 w-full lg:top-37 lg:px-7 lg:gap-4">
-                        <h1 className="text-xl w-full tracking-wider lg:text-3xl lg:tracking-widest">{formData.cardNumber || "0000 0000 0000 0000"}</h1>
-                        <div className="flex justify-between text-xs lg:text-sm">
+                <div className="absolute top-29.5 z-50 text-white md:absolute sm:right-65 md:-right-25 md:top-60 lg:top-50 xl:top-35 xl:-right-30">
+                    <img src="./assets/images/bg-card-front.png" alt="" className="w-70 md:w-80 lg:w-90 xl:w-auto"/>
+                    <img src="./assets/images/card-logo.svg" alt="" className="absolute top-0 p-5 w-25 xl:w-auto"/>
+                    <div className="flex flex-col gap-2 absolute top-20 px-5 w-full md:top-26 lg:top-30 xl:top-37 xl:px-7 xl:gap-4">
+                        <h1 className="text-xl w-full tracking-wider md:tracking-widest md:text-xl lg:text-2xl xl:text-3xl lg:tracking-widest">{formData.cardNumber || "0000 0000 0000 0000"}</h1>
+                        <div className="flex justify-between text-xs xl:text-sm">
                             <p className="uppercase">{formData.cardName || "Jane Appleseed"}</p>
                             <p>{formData.month || "00"}/{formData.year || "00"}</p>
                         </div>
                     </div>
                 </div>
-                <div className="relative flex justify-end md:absolute md:-right-30 md:top-75 lg:top-90 lg:-right-60">
-                    <img src="./assets/images/bg-card-back.png" alt="" className="w-70 xl:w-auto" />
-                    <p className="absolute top-16.5 right-10 text-sm text-white lg:top-27.5 lg:right-13">{formData.cvc || "000"}</p>
+                <div className="relative flex justify-end sm:right-35 md:absolute md:-right-25 md:top-105 lg:top-103 lg:-right-43 xl:top-100 xl:-right-60">
+                    <img src="./assets/images/bg-card-back.png" alt="" className="w-70 md:w-80 lg:w-90 xl:w-auto" />
+                    <p className="absolute top-16.5 right-10 text-sm text-white md:top-19 lg:top-21.5 lg:right-11 xl:top-27.5 xl:right-13">{formData.cvc || "000"}</p>
                 </div>
             </div>
 
             <div className="md:w-3/4 md:ml-20">
-                {!result ? <form className="py-18 px-6 font-bold text-sm md:w-90 mx-auto lg:w-100">
+                {!result ? <form className="py-18 px-6 font-bold text-sm sm:w-130 md:w-90 mx-auto lg:w-88 xl:w-100">
                     <label className="uppercase block mb-1 text-very-dark-violet">Cardholder Name</label>
-                    <input type="text" 
-                            name="cardName" 
-                            placeholder="e.g. Jane Appleseed"
-                            className={`mb-5 outline-none bg-white border ${errors.cardName ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg`}
-                            value={formData.cardName}
-                            onChange={handleChange}
-                    />
+                    <div className="mb-5 sm:mb-7 p-[1px] rounded-lg focus-within:bg-gradient-to-br focus-within:from-[hsl(249,99%,64%)] focus-within:to-[hsl(278,94%,30%)]">
+                        <input type="text" 
+                                name="cardName" 
+                                placeholder="e.g. Jane Appleseed"
+                                className={` outline-none bg-white border ${errors.cardName ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg bg-white cursor-pointer`}
+                                value={formData.cardName}
+                                onChange={handleChange}
+                        />
+                    </div>
                     {errors.cardName && <p className="text-red text-xs -mt-5 mb-5">{errors.cardName}</p>}
 
                     <label className="uppercase block mb-1 text-very-dark-violet">Card Number</label>
-                    <input type="text"
-                            name="cardNumber"
-                            placeholder="e.g. 1234 5678 9123 0000"
-                            className={`mb-5 outline-0 border ${errors.cardNumber ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg`}
-                            value={formData.cardNumber}
-                            onChange={handleChange}
-                    /> 
+                    <div className="mb-5 sm:mb-7  p-[1px] rounded-lg focus-within:bg-gradient-to-br focus-within:from-[hsl(249,99%,64%)] focus-within:to-[hsl(278,94%,30%)]">
+                        <input type="text"
+                                name="cardNumber"
+                                placeholder="e.g. 1234 5678 9123 0000"
+                                className={`outline-none border ${errors.cardNumber ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg bg-white cursor-pointer`}
+                                value={formData.cardNumber}
+                                onChange={handleChange}
+                        /> 
+                    </div>
                     {errors.cardNumber && <p className="text-red text-xs -mt-5 mb-5">{errors.cardNumber}</p>}
 
-                    <div className="flex mb-1 space-x-5 text-very-dark-violet">
-                        <div className="space-x-1">
+                    <div className="flex mb-1 space-x-5 text-very-dark-violet sm:space-x-14 md:space-x-1 xl:space-x-5">
+                        <div className="space-x-1 sm:space-x-13 md:space-x-1 xl:space-x-4">
                             <label className="uppercase tracking-wider">Exp. date</label>
                             <label className="uppercase tracking-wider">(mm/yy)</label>
                         </div>
@@ -143,22 +147,22 @@ export default function Home() {
 
                     <div className="flex space-x-2 mb-6">
                         <div className="flex w-1/2 space-x-2">
-                            <div>
+                            <div className="p-[1px] rounded-lg focus-within:bg-gradient-to-br focus-within:from-[hsl(249,99%,64%)] focus-within:to-[hsl(278,94%,30%)]">
                                 <input type="text"
                                         name="month" 
                                         placeholder="MM" 
-                                        className={`outline-0 border ${errors.month ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg`}
+                                        className={`outline-none border ${errors.month ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg bg-white cursor-pointer`}
                                         value={formData.month}
                                         onChange={handleChange}
                                 />
                                 {errors.month && <p className="text-red text-xs mt-1 mb-5">{errors.month}</p>}
                             </div>
 
-                            <div>
+                            <div className="p-[1px] rounded-lg focus-within:bg-gradient-to-br focus-within:from-[hsl(249,99%,64%)] focus-within:to-[hsl(278,94%,30%)]">
                                 <input type="text"
                                         name="year" 
                                         placeholder="YY" 
-                                        className={`outline-0 border ${errors.year ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg`}
+                                        className={`outline-none border ${errors.year ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg bg-white cursor-pointer`}
                                         value={formData.year}
                                         onChange={handleChange}
                                 />
@@ -166,11 +170,11 @@ export default function Home() {
                             </div>
                         </div>
                         
-                        <div>
+                        <div className="w-1/2 p-[1px] rounded-lg focus-within:bg-gradient-to-br focus-within:from-[hsl(249,99%,64%)] focus-within:to-[hsl(278,94%,30%)]">
                             <input type="text"
                                     name="cvc"
                                     placeholder="e.g. 123"
-                                    className={`outline-0 border ${errors.cvc ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg`}
+                                    className={`outline-none border ${errors.cvc ? 'border-red' : 'border-light-grayish-violet'} w-full p-3 rounded-lg placeholder:text-dark-grayish-violet placeholder:text-lg bg-white cursor-pointer`}
                                     value={formData.cvc}
                                     onChange={handleChange}
                             />
@@ -188,7 +192,7 @@ export default function Home() {
                     <div className="flex justify-center mb-6"><img src="./assets/images/icon-complete.svg" alt="complete icon" /></div>
                     <h1 className="uppercase font-bold mb-2 text-xl tracking-widest">Thank You!</h1>
                     <p className="text-sm font-bold text-dark-grayish-violet lg:mb-6">We've added your card details</p>
-                    <button className="bg-very-dark-violet w-full text-white py-3 rounded-lg mt-5 text-lg cursor-pointer" onClick={handleResult}>Confirm</button>
+                    <button className="bg-very-dark-violet w-full text-white py-3 rounded-lg mt-5 text-lg cursor-pointer sm:w-70" onClick={handleResult}>Confirm</button>
                 </div> }
             </div>
         </main>
